@@ -693,14 +693,14 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
                   cellInfo,
                   row[pivotValKey],
                 )
-                if (pivotBy) {
-                  if (cellInfo.groupedByPivot) {
-                    resolvedCell = null
-                  }
-                  if (!cellInfo.subRows && !SubComponent) {
-                    resolvedCell = null
-                  }
-                }
+                // if (pivotBy) {
+                //   if (cellInfo.groupedByPivot) {
+                //     resolvedCell = null
+                //   }
+                //   if (!cellInfo.subRows && !SubComponent) {
+                //     resolvedCell = null
+                //   }
+                // }
               }
 
               const resolvedOnExpanderClick = useOnExpanderClick
