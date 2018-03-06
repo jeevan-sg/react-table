@@ -3364,14 +3364,15 @@ var ReactTable = function (_Methods) {
               var ResolvedPivotComponent = column.Pivot || DefaultResolvedPivotComponent;
 
               // Is this cell expandable?
-              if (cellInfo.pivoted || cellInfo.expander) {
+              if ( /* cellInfo.pivoted || */cellInfo.expander) {
                 // Make it expandable by defualt
                 cellInfo.expandable = true;
                 useOnExpanderClick = true;
                 // If pivoted, has no subRows, and does not have a subComponent,
                 // do not make expandable
-                if (cellInfo.pivoted && !cellInfo.subRows && !SubComponent) {
+                if ( /* cellInfo.pivoted && */!cellInfo.subRows && !SubComponent) {
                   cellInfo.expandable = false;
+                  useOnExpanderClick = false;
                 }
               }
 
@@ -3390,7 +3391,7 @@ var ReactTable = function (_Methods) {
                   // Show the pivot preview
                   resolvedCell = _.normalizeComponent(ResolvedAggregatedComponent, cellInfo, value);
                 } else {
-                  resolvedCell = null;
+                  resolvedCell = _.normalizeComponent(ResolvedPivotComponent, cellInfo, value);
                 }
               } else if (cellInfo.aggregated) {
                 resolvedCell = _.normalizeComponent(ResolvedAggregatedComponent, cellInfo, value);

@@ -639,14 +639,15 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
                 column.Pivot || DefaultResolvedPivotComponent
 
               // Is this cell expandable?
-              if (cellInfo.pivoted || cellInfo.expander) {
+              if (/* cellInfo.pivoted || */ cellInfo.expander) {
                 // Make it expandable by defualt
                 cellInfo.expandable = true
                 useOnExpanderClick = true
                 // If pivoted, has no subRows, and does not have a subComponent,
                 // do not make expandable
-                if (cellInfo.pivoted && !cellInfo.subRows && !SubComponent) {
+                if (/* cellInfo.pivoted && */ !cellInfo.subRows && !SubComponent) {
                   cellInfo.expandable = false
+                  useOnExpanderClick = false
                 }
               }
 
@@ -677,7 +678,11 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
                     value,
                   )
                 } else {
-                  resolvedCell = null
+                  resolvedCell = _.normalizeComponent(
+                    ResolvedPivotComponent,
+                    cellInfo,
+                    value,
+                  )
                 }
               } else if (cellInfo.aggregated) {
                 resolvedCell = _.normalizeComponent(
