@@ -3364,7 +3364,7 @@ var ReactTable = function (_Methods) {
               var ResolvedPivotComponent = column.Pivot || DefaultResolvedPivotComponent;
 
               // Is this cell expandable?
-              if ( /* cellInfo.pivoted || */cellInfo.expander) {
+              if (cellInfo.pivoted || cellInfo.expander) {
                 // Make it expandable by defualt
                 cellInfo.expandable = true;
                 useOnExpanderClick = true;

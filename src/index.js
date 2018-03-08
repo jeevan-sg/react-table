@@ -639,7 +639,7 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
                 column.Pivot || DefaultResolvedPivotComponent
 
               // Is this cell expandable?
-              if (/* cellInfo.pivoted || */ cellInfo.expander) {
+              if (cellInfo.pivoted || cellInfo.expander) {
                 // Make it expandable by defualt
                 cellInfo.expandable = true
                 useOnExpanderClick = true
